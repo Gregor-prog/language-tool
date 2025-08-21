@@ -1,9 +1,9 @@
-# Use a lightweight Java runtime as the base image
 FROM openjdk:17-slim
 
-# Copy the server JAR and the lib directory into the container's root
+# Copy the LanguageTool server jar and required lib folder
 COPY languagetool-server.jar /languagetool-server.jar
 COPY lib /lib
 
-# Define the command to run the server with the classpath including the lib directory and explicitly enabling supported languages
-CMD ["java", "-cp", "languagetool-server.jar:lib/*", "org.languagetool.server.HTTPServer", "--port", "8081", "--public", "--enable-lang", "en"]
+# Run LanguageTool server exposing port 8081 and enabling English and Spanish
+CMD ["java", "-cp", "languagetool-server.jar:lib/*", "org.languagetool.server.HTTPServer", "--port", "8081", "--public", "--enable-lang", "en-US", "--enable-lang", "es-ES"]
+EXPOSE 8081
