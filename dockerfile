@@ -6,4 +6,4 @@ COPY languagetool-server.jar /languagetool-server.jar
 COPY lib /lib
 
 # Define the command to run the server with the classpath including the lib directory
-CMD ["java", "-cp", "languagetool-server.jar:libs/*", "org.languagetool.server.HTTPServer", "--port", "8081", "--public"]
+CMD ["java", "-cp", "languagetool-server.jar:lib/*", "org.languagetool.server.HTTPServer", "--port", "8081", "--public"]
